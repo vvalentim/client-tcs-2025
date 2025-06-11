@@ -4,7 +4,7 @@ import { GuestRoute } from "./components/GuestRoute";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
 import { Login, Signup } from "./pages/auth";
-import { Inbox, Profile } from "./pages/mail";
+import { Inbox, Account } from "./pages/mail";
 
 export const router = createBrowserRouter([
     {
@@ -16,8 +16,8 @@ export const router = createBrowserRouter([
                 Component: Inbox,
             },
             {
-                path: "profile",
-                Component: Profile,
+                path: "account",
+                Component: Account,
             },
         ],
     },

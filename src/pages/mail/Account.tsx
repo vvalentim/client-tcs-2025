@@ -18,7 +18,7 @@ type UserMutableFields = {
     senha: string;
 };
 
-export function Profile() {
+export function Account() {
     const auth = useAuth();
     const navigate = useNavigate();
 
@@ -259,7 +259,7 @@ export function Profile() {
                 <div className="mt-6 flex items-center justify-between">
                     <div>
                         <button
-                            type="submit"
+                            type="button"
                             onClick={deleteUser}
                             disabled={
                                 updateUserMutation.isPending ||
@@ -282,7 +282,10 @@ export function Profile() {
                         </button>
                         <button
                             type="submit"
-                            disabled={updateUserMutation.isPending}
+                            disabled={
+                                updateUserMutation.isPending ||
+                                deleteUserMutation.isPending
+                            }
                             className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 cursor-pointer"
                         >
                             {updateUserMutation.isPending

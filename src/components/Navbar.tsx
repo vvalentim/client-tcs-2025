@@ -79,10 +79,10 @@ export function Navbar() {
                             >
                                 <MenuItem>
                                     <Link
-                                        to={"/profile"}
+                                        to={"/account"}
                                         className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-200 data-focus:outline-hidden"
                                     >
-                                        Perfil
+                                        Conta
                                     </Link>
                                 </MenuItem>
                                 <MenuItem>

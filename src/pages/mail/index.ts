@@ -1,4 +1,4 @@
 import { Inbox } from "./Inbox";
-import { Profile } from "./Profile";
+import { Account } from "./Account";
 
-export { Inbox, Profile };
+export { Inbox, Account };
