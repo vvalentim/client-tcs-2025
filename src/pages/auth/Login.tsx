@@ -61,16 +61,11 @@ export function Login() {
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                {/* <img
-                    alt="Your Company"
-                    src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                    className="mx-auto h-10 w-auto"
-                /> */}
                 <EnvelopeIcon
                     aria-hidden="true"
-                    className="mx-auto size-10 text-indigo-600"
+                    className="mx-auto size-10 text-white"
                 />
-                <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+                <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white">
                     Acesse sua conta
                 </h2>
             </div>
@@ -85,10 +80,10 @@ export function Login() {
                                 {...register("email", {
                                     required: "O campo email é obrigatório",
                                 })}
-                                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
                             />
                             {errors.email && (
-                                <div className="text-sm text-red-500">
+                                <div className="text-sm text-red-500 my-2">
                                     {errors.email.message}
                                 </div>
                             )}
@@ -113,10 +108,10 @@ export function Login() {
                                             "A senha deve ter no máximo 20 caracteres",
                                     },
                                 })}
-                                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
                             />
                             {errors.senha && (
-                                <div className="text-sm text-red-500">
+                                <div className="text-sm text-red-500 my-2">
                                     {errors.senha.message}
                                 </div>
                             )}
@@ -127,7 +122,7 @@ export function Login() {
                         <button
                             type="submit"
                             disabled={authMutation.isPending}
-                            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            className="flex w-full justify-center rounded-md bg-blue-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 cursor-pointer"
                         >
                             {authMutation.isPending
                                 ? "Carregando..."
@@ -135,7 +130,7 @@ export function Login() {
                         </button>
 
                         {errors.root && (
-                            <div className="text-sm text-red-500 mb-2">
+                            <div className="text-sm text-red-500 my-2">
                                 {errors.root.message}
                             </div>
                         )}
@@ -146,7 +141,7 @@ export function Login() {
                     Não possui uma conta?{" "}
                     <Link
                         to={"/auth/signup"}
-                        className="font-semibold text-indigo-600 hover:text-indigo-500"
+                        className="font-semibold text-white hover:text-neutral-300"
                     >
                         Cadastre-se
                     </Link>

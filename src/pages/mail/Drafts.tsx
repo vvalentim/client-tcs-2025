@@ -1,26 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import { inboxQuery, userProfileQuery } from "../../api/queries";
 
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
+import { draftsQuery } from "../../api/queries/draftsQuery";
 import { LayoutInner } from "../../components/LayoutInner";
 import { MailRow } from "../../components/MailRow";
 import type { Mail } from "../../types/Mail";
 
-export function Inbox() {
-    const { data: user } = useQuery(userProfileQuery());
-    const userEmail = user?.data?.usuario?.email;
+export function Drafts() {
+    const { data: draftsResponse } = useQuery(draftsQuery());
 
-    const { data: inbox } = useQuery({
-        ...inboxQuery(),
-        enabled: !!userEmail,
-    });
-
-    // const mails =
-    //     inbox?.data?.emails.filter(
-    //         (mail: Mail) => mail.emailRemetente !== userEmail,
-    //     ) || [];
-
-    const mails = inbox?.data?.emails || [];
+    const drafts = draftsResponse?.data?.rascunhos || [];
 
     return (
         <LayoutInner>
@@ -35,8 +24,12 @@ export function Inbox() {
 
                 <div className="flex flex-col border-t-1 border-neutral-500">
                     <ul className="divide-y divide-neutral-500">
-                        {mails.map((mail: Mail, index: number) => (
-                            <MailRow mail={mail} key={`mail-row-${index}`} />
+                        {drafts.map((draft: Mail, index: number) => (
+                            <MailRow
+                                mail={draft}
+                                mode="draft"
+                                key={`mail-row-${index}`}
+                            />
                         ))}
                     </ul>
                 </div>

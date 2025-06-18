@@ -29,9 +29,7 @@ export function Signup() {
 
     const createUserMutation = useMutation({
         mutationFn: async (user: UserRegistration) => {
-            // Simulate network delay
             await new Promise((resolve) => setTimeout(resolve, 1000));
-            // Make the API call to login and retrive the token
             return mailApi.post("/usuarios", user);
         },
         onSuccess: () => {
@@ -61,16 +59,11 @@ export function Signup() {
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                {/* <img
-                    alt="Your Company"
-                    src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                    className="mx-auto h-10 w-auto"
-                /> */}
                 <EnvelopeIcon
                     aria-hidden="true"
-                    className="mx-auto size-10 text-indigo-600"
+                    className="mx-auto size-10 text-white"
                 />
-                <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+                <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white">
                     Cadastrar-se
                 </h2>
             </div>
@@ -78,13 +71,13 @@ export function Signup() {
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                 <form className="space-y-6" onSubmit={handleSubmit(signup)}>
                     <div>
-                        <label
-                            htmlFor="nome"
-                            className="block text-sm/6 font-semibold text-gray-900"
-                        >
-                            Nome
-                        </label>
                         <div className="mt-2">
+                            <label
+                                htmlFor="nome"
+                                className="block text-sm/6 font-semibold text-white"
+                            >
+                                Nome
+                            </label>
                             <input
                                 id="nome"
                                 type="text"
@@ -97,10 +90,10 @@ export function Signup() {
                                             "O nome deve ter no máximo 255 caracteres",
                                     },
                                 })}
-                                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-neutral-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
                             />
                             {errors.nome && (
-                                <div className="text-sm text-red-500">
+                                <div className="text-sm text-red-500 my-2">
                                     {errors.nome.message}
                                 </div>
                             )}
@@ -111,7 +104,7 @@ export function Signup() {
                         <div className="mt-2">
                             <label
                                 htmlFor="email"
-                                className="block text-sm/6 font-semibold text-gray-900"
+                                className="block text-sm/6 font-semibold text-white"
                             >
                                 Email
                             </label>
@@ -122,10 +115,10 @@ export function Signup() {
                                 {...register("email", {
                                     required: "O campo email é obrigatório",
                                 })}
-                                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-neutral-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
                             />
                             {errors.email && (
-                                <div className="text-sm text-red-500">
+                                <div className="text-sm text-red-500 my-2">
                                     {errors.email.message}
                                 </div>
                             )}
@@ -136,7 +129,7 @@ export function Signup() {
                         <div className="mt-2">
                             <label
                                 htmlFor="senha"
-                                className="block text-sm/6 font-semibold text-gray-900"
+                                className="block text-sm/6 font-semibold text-white"
                             >
                                 Senha
                             </label>
@@ -157,10 +150,10 @@ export function Signup() {
                                             "A senha deve ter no máximo 20 caracteres",
                                     },
                                 })}
-                                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-neutral-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
                             />
                             {errors.senha && (
-                                <div className="text-sm text-red-500">
+                                <div className="text-sm text-red-500 my-2">
                                     {errors.senha.message}
                                 </div>
                             )}
@@ -169,7 +162,7 @@ export function Signup() {
 
                     <div>
                         {errors.root && (
-                            <div className="text-sm text-red-500 mb-2">
+                            <div className="text-sm text-red-500 my-2">
                                 {errors.root.message}
                             </div>
                         )}
@@ -177,7 +170,7 @@ export function Signup() {
                         <button
                             type="submit"
                             disabled={createUserMutation.isPending}
-                            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 cursor-pointer"
+                            className="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-green-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 cursor-pointer"
                         >
                             {createUserMutation.isPending
                                 ? "Carregando..."
@@ -187,7 +180,7 @@ export function Signup() {
                         <button
                             type="button"
                             onClick={() => navigate(-1)}
-                            className="flex w-full justify-center rounded-md bg-gray-200 mt-3 px-3 py-1.5 text-sm/6 font-semibold text-indigo-500 shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black cursor-pointer"
+                            className="flex w-full justify-center rounded-md bg-neutral-700 px-3 py-1.5 mt-3 text-sm/6 font-semibold text-white shadow-xs hover:bg-neutral-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 cursor-pointer"
                         >
                             Voltar
                         </button>
@@ -196,58 +189,4 @@ export function Signup() {
             </div>
         </div>
     );
-}
-
-{
-    // <form onSubmit={handleSubmit(signup)}>
-    //     <div>
-    //         <input
-    //             type="nome"
-    //             placeholder="Nome"
-    //             {...register("nome", {
-    //                 required: "O campo nome é obrigatório",
-    //                 maxLength: {
-    //                     value: 255,
-    //                     message: "O nome deve ter no máximo 255 caracteres",
-    //                 },
-    //             })}
-    //         />
-    //         {errors.nome && <div>{errors.nome.message}</div>}
-    //     </div>
-    //     <div>
-    //         <input
-    //             type="email"
-    //             placeholder="Email"
-    //             {...register("email", {
-    //                 required: "O campo email é obrigatório",
-    //             })}
-    //         />
-    //         {errors.email && <div>{errors.email.message}</div>}
-    //     </div>
-    //     <div>
-    //         <input
-    //             type="password"
-    //             placeholder="Senha"
-    //             {...register("senha", {
-    //                 required: "O campo senha é obrigatório",
-    //                 minLength: {
-    //                     value: 8,
-    //                     message: "A senha deve ter no mínimo 6 caracteres",
-    //                 },
-    //                 maxLength: {
-    //                     value: 20,
-    //                     message: "A senha deve ter no máximo 20 caracteres",
-    //                 },
-    //             })}
-    //         />
-    //         {errors.senha && <div>{errors.senha.message}</div>}
-    //     </div>
-    //     {errors.root && <div>{errors.root.message}</div>}
-    //     <button type="button" onClick={() => navigate("/auth/login")}>
-    //         Voltar
-    //     </button>
-    //     <button type="submit" disabled={createUserMutation.isPending}>
-    //         {createUserMutation.isPending ? "Carregando..." : "Cadastrar-se"}
-    //     </button>
-    // </form>;
 }
