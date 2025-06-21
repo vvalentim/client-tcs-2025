@@ -23,8 +23,11 @@ export function Compose() {
         enabled: !!draftId,
     });
 
+    const { emailDestinatario, assunto, corpo } =
+        draftData?.data?.rascunho || {};
+
     const { register, watch, handleSubmit } = useForm<DraftForm>({
-        values: draftData?.data?.rascunho || {},
+        values: { emailDestinatario, assunto, corpo },
     });
 
     const saveDraftMutation = useMutation({
@@ -35,14 +38,16 @@ export function Compose() {
 
             return mailApi.post("/rascunhos", mail);
         },
-        onSuccess: () => {
+        onSuccess: (response) => {
             queryClient.invalidateQueries({
                 queryKey: ["draft", draftId],
                 exact: true,
             });
 
             alert("Rascunho salvo com sucesso!");
-            navigate("/drafts");
+            navigate(`/compose/${response?.data.rascunho.rascunhoId}`, {
+                replace: true,
+            });
         },
         onError: (error) => {
             let errorMessage =
@@ -79,7 +84,7 @@ export function Compose() {
         },
         onSuccess: () => {
             alert("Email enviado com sucesso!");
-            navigate("/drafts");
+            navigate("/drafts", { replace: true });
         },
         onError: (error) => {
             let errorMessage =
