@@ -7,9 +7,9 @@ import { mailApi } from "../../api/mailApi";
 import { LayoutInner } from "../../components/LayoutInner";
 
 type DraftForm = {
-    assunto: string;
-    emailDestinatario: string;
-    corpo: string;
+    assunto?: string;
+    emailDestinatario?: string;
+    corpo?: string;
 };
 
 export function Compose() {
@@ -27,6 +27,7 @@ export function Compose() {
         draftData?.data?.rascunho || {};
 
     const { register, watch, handleSubmit } = useForm<DraftForm>({
+        defaultValues: { emailDestinatario: "", assunto: "", corpo: "" },
         values: { emailDestinatario, assunto, corpo },
     });
 
@@ -108,7 +109,7 @@ export function Compose() {
         },
         onSuccess: () => {
             queryClient.invalidateQueries({
-                queryKey: ["draft", draftId],
+                queryKey: ["drafts"],
                 exact: true,
             });
 

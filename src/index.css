@@ -18,3 +18,15 @@ body {
     flex-direction: column;
     flex: 1;
 }
+
+@layer utilities {
+    /* Chrome, Safari and Opera */
+    .scrollbar-hidden::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scrollbar-hidden {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+}
